@@ -2,4 +2,7 @@
     <string name="app_name">ChatApp</string>
     <string name="user_test_text">User Test Text</string>
     <string name="login">Login</string>
+    <string name="add_new_message">Add new message</string>
+    <string name="username">username</string>
+    <string name="message">message</string>
 </resources>
