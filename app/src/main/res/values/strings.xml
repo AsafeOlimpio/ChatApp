@@ -6,4 +6,6 @@
     <string name="username">username</string>
     <string name="message">message</string>
     <string name="enviar">enviar</string>
+    <string name="empty_username">Username Cannot Be Empty</string>
+    <string name="empty_message">Message Cannot Be Empty</string>
 </resources>
