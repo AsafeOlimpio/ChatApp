@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="start">
 
     <TextView
-        android:id="@+id/text_view"
+        android:id="@+id/chat_upper_text"
         android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:text="@string/user_test_text"
+        style="@style/asafes_textStyle_view_holder"/>
+
+    <TextView
+        android:id="@+id/chat_down_text"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/chat_upper_text"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:text="@string/user_test_text"
         style="@style/asafes_textStyle"/>
 
-</LinearLayout>
+</RelativeLayout>
