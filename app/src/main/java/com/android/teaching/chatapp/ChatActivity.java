@@ -66,7 +66,7 @@ public class ChatActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 1;
+            return 3;
         }
 
         @Override
