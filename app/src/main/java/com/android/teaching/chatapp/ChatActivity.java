@@ -48,16 +48,17 @@ public class ChatActivity extends AppCompatActivity {
         //No necesita parametros
         getSupportActionBar();
 
-        //myAdapter = new MyAdapter();
+        myAdapter = new MyAdapter();
 
-        //listView.findViewById(R.id.list);
-        //listView.setAdapter(myAdapter);
+        listView = findViewById(R.id.list);
+
+        listView.setAdapter(myAdapter);
     }
 
     public class MyAdapter extends BaseAdapter {
         @Override
         public int getCount() {
-            return 0;
+            return 1;
         }
 
         @Override
