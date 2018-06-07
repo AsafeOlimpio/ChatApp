@@ -15,11 +15,15 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 public class ChatActivity extends AppCompatActivity {
 
     //private FIlmsFirebaseInteractor fIlmsFirebaseInteractor;
     private MyAdapter myAdapter;
     private ListView listView;
+    private FirebaseDatabase firebaseDatabase;
+    MessageModel messageModel;
 
     @Override
     public boolean onCreatePanelMenu(int featureId, Menu menu) {
