@@ -1,5 +1,6 @@
 package com.android.teaching.chatapp;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +18,9 @@ public class NewMessageActivity extends AppCompatActivity {
         myToolbar.setTitle("New Message");
         //No necesita parametros
         getSupportActionBar();
+
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
     }
 
     public void enviar(View view) {
