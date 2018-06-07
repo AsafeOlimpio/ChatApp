@@ -5,4 +5,5 @@
     <string name="add_new_message">Add new message</string>
     <string name="username">username</string>
     <string name="message">message</string>
+    <string name="enviar">enviar</string>
 </resources>
