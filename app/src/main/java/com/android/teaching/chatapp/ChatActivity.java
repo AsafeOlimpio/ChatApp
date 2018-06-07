@@ -21,15 +21,14 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        myAdapter = new MyAdapter();
+        //myAdapter = new MyAdapter();
 
-        listView.findViewById(R.id.list);
-        listView.setAdapter(myAdapter);
+        //listView.findViewById(R.id.list);
+        //listView.setAdapter(myAdapter);
 
     }
 
-    public class MyAdapter extends BaseAdapter{
-
+    public class MyAdapter extends BaseAdapter {
         @Override
         public int getCount() {
             return 0;
@@ -46,14 +45,12 @@ public class ChatActivity extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int i, View convertview, ViewGroup parent) {
+        public View getView(int i, View view, ViewGroup viewGroup) {
             LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View rowView = inflater.inflate(R.layout.chat_activity_model, parent, false);
-
+            View rowView = inflater.inflate(R.layout.chat_activity_model, viewGroup, false);
             TextView textViewUser = rowView.findViewById(R.id.chat_upper_text);
             TextView textViewMessage =rowView.findViewById(R.id.chat_down_text);
             return rowView;
-
         }
     }
 }
