@@ -51,7 +51,8 @@ public class NewMessageActivity extends AppCompatActivity {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("messages");
 
-            myRef.setValue("cabesa");
+            myRef.child(ke).child("text").setValue(usernameinput);
+            myRef.child("random2").child("username").setValue(messageinput);
         }
     }
 }
