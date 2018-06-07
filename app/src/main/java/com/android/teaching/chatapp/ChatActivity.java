@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class ChatActivity extends AppCompatActivity {
 
     //private FIlmsFirebaseInteractor fIlmsFirebaseInteractor;
@@ -60,6 +62,8 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     public class MyAdapter extends BaseAdapter {
+        ArrayList<MessageModel> messageModels = new ArrayList<>();
+
         @Override
         public int getCount() {
             return 1;
@@ -77,6 +81,7 @@ public class ChatActivity extends AppCompatActivity {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
+
             LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View rowView = inflater.inflate(R.layout.chat_activity_model, viewGroup, false);
             TextView textViewUser = rowView.findViewById(R.id.chat_upper_text);
