@@ -22,9 +22,9 @@
     <style name="asafes_textStyle_view_holder">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">10dp</item>
         <item name="android:padding">4dp</item>
-        <item name="android:textColor">@color/grey</item>
+        <item name="android:textColor">@color/green</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -35,4 +35,5 @@
         <item name="android:layout_margin">5dp</item>
     </style>
 
+    <color name="green">#32CD32</color>
 </resources>

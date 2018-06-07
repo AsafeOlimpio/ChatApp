@@ -8,6 +8,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class NewMessageActivity extends AppCompatActivity {
 
     private EditText username;
@@ -42,6 +45,13 @@ public class NewMessageActivity extends AppCompatActivity {
 
         else if (TextUtils.isEmpty(messageinput)){
             message.setError(getString(R.string.empty_message));
+        }
+
+        else {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("messages");
+
+            myRef.setValue("cabesa");
         }
     }
 }
