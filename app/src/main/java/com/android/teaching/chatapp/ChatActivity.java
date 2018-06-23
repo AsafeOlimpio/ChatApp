@@ -15,23 +15,31 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class ChatActivity extends AppCompatActivity {
 
-    //private FIlmsFirebaseInteractor fIlmsFirebaseInteractor;
+
     private MyAdapter myAdapter;
     private ListView listView;
     private FirebaseDatabase firebaseDatabase;
-    MessageModel messageModel;
+    private ArrayList <MessageModel> messageModelArrayList;
+
+
+    //I Should have used "onCreateOptionsMenu"
+
 
     @Override
-    public boolean onCreatePanelMenu(int featureId, Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.activity_chat_menu, menu);
-        return super.onCreatePanelMenu(featureId, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -51,22 +59,43 @@ public class ChatActivity extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.chat_activity_toolbar);
         setSupportActionBar(myToolbar);
-        //No necesita parametros
         getSupportActionBar();
 
-        myAdapter = new MyAdapter();
-
         listView = findViewById(R.id.list);
+    }
 
-        listView.setAdapter(myAdapter);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("messages");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                messageModelArrayList = new ArrayList<>();
+
+                //Get Data
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    messageModelArrayList.add(snapshot.getValue(MessageModel.class));
+                }
+
+                //Create Adapter
+                listView.setAdapter(new MyAdapter());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     public class MyAdapter extends BaseAdapter {
-        ArrayList<MessageModel> messageModels = new ArrayList<>();
 
         @Override
         public int getCount() {
-            return 3;
+            return messageModelArrayList.size();
         }
 
         @Override
@@ -81,12 +110,11 @@ public class ChatActivity extends AppCompatActivity {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
+            View views = LayoutInflater.from(ChatActivity.this).inflate(R.layout.chat_activity_model,viewGroup,false);
 
-            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View rowView = inflater.inflate(R.layout.chat_activity_model, viewGroup, false);
-            TextView textViewUser = rowView.findViewById(R.id.chat_upper_text);
-            TextView textViewMessage =rowView.findViewById(R.id.chat_down_text);
-            return rowView;
+            ((TextView) view.findViewById(R.id.chat_upper_text)).setText(messageModelArrayList.get(i).getUsername());
+            ((TextView) view.findViewById(R.id.chat_down_text)).setText(messageModelArrayList.get(i).getText());
+            return view;
         }
     }
 }
