@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,15 +26,8 @@ import java.util.ArrayList;
 
 public class ChatActivity extends AppCompatActivity {
 
-
-    private MyAdapter myAdapter;
     private ListView listView;
-    private FirebaseDatabase firebaseDatabase;
     private ArrayList <MessageModel> messageModelArrayList;
-
-
-    //I Should have used "onCreateOptionsMenu"
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,17 +50,14 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        Log.d("ChatActivity", "onCreate");
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.chat_activity_toolbar);
         setSupportActionBar(myToolbar);
         getSupportActionBar();
 
         listView = findViewById(R.id.list);
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("messages");
         reference.addValueEventListener(new ValueEventListener() {
@@ -85,18 +76,17 @@ public class ChatActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.d( "Failed to read value.","Error");
             }
         });
+        Log.d("ChatActivity","onResume");
 
     }
 
-    public class MyAdapter extends BaseAdapter {
+    private class MyAdapter extends BaseAdapter {
 
         @Override
-        public int getCount() {
-            return messageModelArrayList.size();
-        }
+        public int getCount() { return messageModelArrayList.size(); }
 
         @Override
         public Object getItem(int i) {
@@ -110,11 +100,13 @@ public class ChatActivity extends AppCompatActivity {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            View views = LayoutInflater.from(ChatActivity.this).inflate(R.layout.chat_activity_model,viewGroup,false);
+            View myViews = LayoutInflater.from(ChatActivity.this).inflate(R.layout.chat_activity_model,viewGroup,false);
 
-            ((TextView) view.findViewById(R.id.chat_upper_text)).setText(messageModelArrayList.get(i).getUsername());
-            ((TextView) view.findViewById(R.id.chat_down_text)).setText(messageModelArrayList.get(i).getText());
-            return view;
+            ((TextView) myViews.findViewById(R.id.chat_upper_text)).setText(messageModelArrayList.get(i).getUsername());
+            ((TextView) myViews.findViewById(R.id.chat_down_text)).setText(messageModelArrayList.get(i).getText());
+            Log.d("ChatActivity","MyAdapter");
+            return myViews;
+
         }
     }
 }

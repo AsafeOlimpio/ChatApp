@@ -10,9 +10,8 @@ import android.widget.EditText;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.iid.FirebaseInstanceId;
 
-public class NewMessageActivity extends AppCompatActivity {
+public class FirebaseTest extends AppCompatActivity {
 
     private EditText username;
     private EditText message;
@@ -20,7 +19,7 @@ public class NewMessageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_message);
+        setContentView(R.layout.activity_firebase_test);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.chat_activity_toolbar);
         setSupportActionBar(myToolbar);
@@ -49,15 +48,13 @@ public class NewMessageActivity extends AppCompatActivity {
         }
 
         else {
-            MessageModel model = new MessageModel();
-            model.setUsername(usernameinput);
-            model.setText(messageinput);
-
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("messages");
 
             String id = myRef.push().getKey();
-            myRef.child(id).setValue(model);
+            myRef.child(id).child("text").setValue(messageinput);
+            myRef.child(id).child("username").setValue(usernameinput);
+
         }
     }
 }

@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "620579158883",
-    "firebase_url": "https://chatapp-72b35.firebaseio.com",
-    "project_id": "chatapp-72b35",
-    "storage_bucket": "chatapp-72b35.appspot.com"
+    "project_number": "957131476118",
+    "firebase_url": "https://chatapp-a4429.firebaseio.com",
+    "project_id": "chatapp-a4429",
+    "storage_bucket": "chatapp-a4429.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:620579158883:android:135f556e10a169de",
+        "mobilesdk_app_id": "1:957131476118:android:135f556e10a169de",
         "android_client_info": {
           "package_name": "com.android.teaching.chatapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "620579158883-leqmj4aoum22k5npfsnd367s5fmi4emo.apps.googleusercontent.com",
+          "client_id": "957131476118-2fp4ht3h6rof2puslrp9hj3hpp6drqek.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.android.teaching.chatapp",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "620579158883-eg57kpp72hm0uq8a4htd4fep6pkmg0kh.apps.googleusercontent.com",
+          "client_id": "957131476118-3nqm6tnfstihlh6ngv4edm96aqe61hdn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD2roCQlMA3tbMhE7wZ_Kw_giz93cv9k-o"
+          "current_key": "AIzaSyDiBryofUgactqFTIa3LGqdK_xDIGba1x4"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "620579158883-eg57kpp72hm0uq8a4htd4fep6pkmg0kh.apps.googleusercontent.com",
+              "client_id": "957131476118-3nqm6tnfstihlh6ngv4edm96aqe61hdn.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
